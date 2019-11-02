@@ -24,7 +24,7 @@ g++ Checker.cpp -o Checker
 
 如果你只需要简单地比较整数（忽略空格和换行），并且不嫌麻烦的话，那么就可以这样做：
 
-将 ```Main.cpp``` ， ```Std.cpp``` 和 ```Dmk.cpp``` 放在和可执行文件（ ```Checker``` 或是 ```Checker.exe```）同一个文件夹下。然后 **在命令行里 ** 运行 Checker 即可（```./Checker``` for linux and ```Checker.exe``` for windows）。
+将 ```Main.cpp``` ， ```Std.cpp``` 和 ```Dmk.cpp``` 放在和可执行文件（ ```Checker``` 或是 ```Checker.exe```）同一个文件夹下。然后 **在命令行里** 运行 Checker 即可（```./Checker``` for linux and ```Checker.exe``` for windows）。
 
 接下来它会编译文件（可能要花一段时间），然后运行。你可以看到：
 
