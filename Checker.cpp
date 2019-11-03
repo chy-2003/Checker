@@ -16,6 +16,9 @@ std::string Construction;
 inline int Work1();
 
 int main() {
+#ifdef __linux__
+	system("mkdir CheckerFiles\n");
+#endif
     printf("Checker Exit With Code : %d\n", Work1());
     return 0;
 }
