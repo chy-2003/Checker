@@ -47,11 +47,13 @@ int Work1()
     else return 0, printf("    \033[31m Judger  Compile failed.\033[0m\n");
 
     printf("\033[33mRunning...\033[0m\n");
+    fflush(stdout);
     int TestCases = 0;
     long long Time1 = 0, Time2 = 0, Time;
     std::chrono::milliseconds Clock1, Clock2;
     while (true) {
         printf("\033[33mCase %5d:\033[0m", ++TestCases);
+        fflush(stdout);
         Construction = DataMakerRunfile + "> " + Input;
 #ifdef __linux__
         Construction = (std::string)"./" + Construction;
@@ -61,6 +63,7 @@ int Work1()
             printf("\033[31mdmk failed.\033[0m\n");
             break;
         }
+        fflush(stdout);
 
         Construction = MyRunfile + "< " + Input + "> " + MyOut;
 #ifdef __linux__
@@ -84,6 +87,7 @@ int Work1()
             printf("\033[31mMy : Runtime Error.\033[0m\n");
             break;
         }
+        fflush(stdout);
 
         Construction = StdRunfile + "< " + Input + "> " + StdOut;
 #ifdef __linux__
@@ -107,6 +111,7 @@ int Work1()
             printf("\033[31mstd : Runtime Error.\033[0m\n");
             break;
         }
+        fflush(stdout);
 
         Construction = CheckerRunfile + Input + MyOut + StdOut;
         int ExitCode;
