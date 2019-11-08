@@ -44,6 +44,8 @@ g++ Checker.cpp -o Checker
 
 下载的文件中应该已经有 a+b problem 的几个文件了，可以直接运行感受一下。
 
+**提示** : 可以使用 chrono 来初始化随机。 ```srand(time(NULL));``` 的随机种子一秒钟改变一次。建议像给出样例中的 ```Dmk.cpp``` 那样生成数据以节约时间。
+
 #### 更近一步
 
 checker 使用了 ```testlib.h``` （见Thanks），并使用了相关的文件（如 ```ncmp.cpp```）。也就是说，当前默认的比较器是 ```ncmp``` ，并且 checker 支持使用 ```testlib.h``` 的 special judge 。
