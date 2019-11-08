@@ -50,7 +50,7 @@ checker 使用了 ```testlib.h``` （见Thanks），并使用了相关的文件�
 
 你可以在 ```CheckerLib\CheckerConfigure.h``` 看到大部分设置，同时这也意味着更改设置之后需要重新编译 checker 。（我知道这样设计很愚蠢，但是开发时间有限，就先这样了。）建议不要修改 define 的 DEFAULT 部分，可以直接修改下面的赋值部分。
 
-你可以下载更多的比较器模板（如 ```wcmp``` 和```icmp``` ，见Thanks）或者根据 ```testlib``` 来写自己的 special judge 。
+你可以下载更多的比较器模板（如 ```wcmp``` 和```icmp``` ，见Thanks）或者根据 ```testlib``` 来写自己的 special judge ，不过你需要手动引用 testlib.h 并保证文件存在。
 
 #### 参与开发
 

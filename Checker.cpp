@@ -5,6 +5,7 @@
 #include <ctime>
 #include <stdlib.h>
 #include <string>
+#include <chrono>
 #ifdef _WIN32
 #include "CheckerLib\CheckerConfigure.h" //for configure
 #endif
@@ -47,8 +48,8 @@ int Work1()
 
     printf("\033[33mRunning...\033[0m\n");
     int TestCases = 0;
-    long long Time1 = 0, Time2 = 0;
-    clock_t T1, T2;
+    long long Time1 = 0, Time2 = 0, Time;
+    std::chrono::milliseconds Clock1, Clock2;
     while (true) {
         printf("\033[33mCase %5d:\033[0m", ++TestCases);
         Construction = DataMakerRunfile + "> " + Input;
@@ -65,12 +66,17 @@ int Work1()
 #ifdef __linux__
         Construction = (std::string)"./" + Construction;
 #endif
-        T1 = clock();
+        Clock1 = std::chrono::duration_cast< std::chrono::milliseconds >(
+			std::chrono::system_clock::now().time_since_epoch()
+			);
         if (!system(Construction.data())) {
-            T2 = clock();
-            Time1 += T2 - T1;
+            Clock2 = std::chrono::duration_cast< std::chrono::milliseconds >(
+                    std::chrono::system_clock::now().time_since_epoch()
+                    );
+            Time = (Clock2 - Clock1).count();
+            Time1 += Time;
             printf("\033[32mMy : [\033[0m");
-            Pt((char *)"Cur:", T2 - T1);
+            Pt((char *)"Cur:", Time);
             printf("\033[32m|\033[0m");
             Pt((char *)"Avr:", Time1 / TestCases);
             printf("\033[32m]  \033[0m");
@@ -83,12 +89,17 @@ int Work1()
 #ifdef __linux__
         Construction = (std::string)"./" + Construction;
 #endif
-        T1 = clock();
+        Clock1 = std::chrono::duration_cast< std::chrono::milliseconds >(
+			std::chrono::system_clock::now().time_since_epoch()
+			);
         if (!system(Construction.data())) {
-            T2 = clock();
-            Time2 += T2 - T1;
+            Clock2 = std::chrono::duration_cast< std::chrono::milliseconds >(
+                    std::chrono::system_clock::now().time_since_epoch()
+                    );
+            Time = (Clock2 - Clock1).count();
+            Time2 += Time;
             printf("\033[32mstd : [\033[0m");
-            Pt((char *)"Cur:", T2 - T1);
+            Pt((char *)"Cur:", Time);
             printf("\033[32m|\033[0m");
             Pt((char *)"Avr:", Time2 / TestCases);
             printf("\033[32m]  \033[0m");
@@ -101,10 +112,8 @@ int Work1()
         int ExitCode;
         if (!(ExitCode = system(Construction.data()))) {
         	fflush(stdout);
-//            printf("\033[32m Passed.\033[0m\n");
         } else {
         	fflush(stdout);
-//            printf("\033[31m Failed With Code %d.\033[0m\n", ExitCode);
             Construction = WayShowDiff + MyOut + StdOut;
             system(Construction.data());
             break;

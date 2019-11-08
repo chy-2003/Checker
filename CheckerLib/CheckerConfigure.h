@@ -8,7 +8,7 @@
 #define DEFAULT_MY "Main.cpp "
 #define DEFAULT_STD "Std.cpp "
 #define DEFAULT_DATAMAKER "Dmk.cpp "
-#define DEFAULT_WAY_SHOW_DIFF "gvim -d "
+#define DEFAULT_WAY_SHOW_DIFF "vim -d "
 
 #ifdef _WIN32
 #  define DEFAULT_MY_RUNFILE "CheckerFiles\\My.exe "
